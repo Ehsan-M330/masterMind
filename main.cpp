@@ -303,7 +303,11 @@ void startNewGame() {
 }
 
 void playDUO() {
-    cout << "Please enter four different numbers between 1 and 6 or enter m to go back to menu\n";
+    if(!allowRepeatednumbers) {
+        cout << "Please enter four different numbers between 1 and 6 or enter m to go back to menu\n";
+    }else{
+        cout << "Please enter four numbers between 1 and 6 or enter m to go back to menu\n";
+    }
     char num[4];
     bool True = true;
     for (int i = 0; i < 4; i++) {
@@ -329,6 +333,12 @@ void playDUO() {
                      << " - " << "-----------|\n";
                 cout << "----------------------------------------\n";
                 level = 0;
+                //making tableHelper empty
+                for (int w = 0; w < 12; w++) {
+                    for (int q = 0; q < 4; q++) {
+                        tableHelper[w][q] = 0;
+                    }
+                }
                 continuehelper = false;
                 collectingAnswersForTable();
                 importgusses();
@@ -377,6 +387,12 @@ void playWithComputer() {
          << " - " << "-----------|\n";
     cout << "----------------------------------------\n";
     level = 0;
+    //making tableHelper empty
+    for (int w = 0; w < 12; w++) {
+        for (int q = 0; q < 4; q++) {
+            tableHelper[w][q] = 0;
+        }
+    }
     collectingAnswersForTable();
     continuehelper = false;
     importgusses();
@@ -397,6 +413,7 @@ void game() {
         handlerGameNumbers();
         makingProgressArrayEmpty();
         continuehelper = true;
+        level=0;
         askingForMenu();
 
     } else if (level == 11) {
@@ -410,6 +427,7 @@ void game() {
         handlerGameNumbers();
         makingProgressArrayEmpty();
         continuehelper = true;
+        level=0;
         askingForMenu();
 
     } else {
@@ -520,7 +538,7 @@ void scoreBoard() {
     int Temp = gameNumber - 1, i = 0;
     while (Temp >= 0) {
         cout << "----------------------------------------\n";
-        cout << "  Game [" << setw(2) << i + 1 << "]   ==   " << 100 - scoreboardlevel[i] << '\n';
+        cout << "  Game [" << setw(2) << i + 1 << " ]   ==   " << 100 - scoreboardlevel[i] << '\n';
         i++;
         Temp--;
     }

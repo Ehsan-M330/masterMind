@@ -303,9 +303,9 @@ void startNewGame() {
 }
 
 void playDUO() {
-    if(!allowRepeatednumbers) {
+    if (!allowRepeatednumbers) {
         cout << "Please enter four different numbers between 1 and 6 or enter m to go back to menu\n";
-    }else{
+    } else {
         cout << "Please enter four numbers between 1 and 6 or enter m to go back to menu\n";
     }
     char num[4];
@@ -340,6 +340,7 @@ void playDUO() {
                     }
                 }
                 continuehelper = false;
+                makingProgressArrayEmpty();
                 collectingAnswersForTable();
                 importgusses();
 
@@ -394,6 +395,7 @@ void playWithComputer() {
         }
     }
     collectingAnswersForTable();
+    makingProgressArrayEmpty();
     continuehelper = false;
     importgusses();
 }
@@ -413,7 +415,7 @@ void game() {
         handlerGameNumbers();
         makingProgressArrayEmpty();
         continuehelper = true;
-        level=0;
+        level = 0;
         askingForMenu();
 
     } else if (level == 11) {
@@ -427,7 +429,7 @@ void game() {
         handlerGameNumbers();
         makingProgressArrayEmpty();
         continuehelper = true;
-        level=0;
+        level = 0;
         askingForMenu();
 
     } else {
